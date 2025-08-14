@@ -18,21 +18,27 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Clean and preprocess the raw housing dataset
-        run: python src/data/run_processing.py \
+        working_directory: ./
+        run: |
+          python src/data/run_processing.py \
           --input data/raw/house_data.csv \
           --output data/processed/cleaned_house_data.csv
 
       - name: Apply transformations and generate features
-        run: python src/features/engineer.py \
+        run: |
+          python src/features/engineer.py \
           --input data/processed/cleaned_house_data.csv \
           --output data/processed/featured_house_data.csv \
           --preprocessor models/trained/preprocessor.pkl
 
       - name: Train your model and log everything to MLflow
-        run: python src/models/train_model.py \
+        run: |
+          python src/models/train_model.py \
           --config configs/model_config.yaml \
           --data data/processed/featured_house_data.csv \
           --models-dir models
+
+          
   build-vote:
     needs: Build_Model
     uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
