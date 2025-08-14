@@ -34,6 +34,7 @@ jobs:
           --data data/processed/featured_house_data.csv \
           --models-dir models
   build-vote:
+    needs: Build_Model
     uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
     with:
       service-path: ./src/api
@@ -44,6 +45,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   build-model:
+    needs: Build_Model
     uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
     with:
       service-path: ./streamlit_app
