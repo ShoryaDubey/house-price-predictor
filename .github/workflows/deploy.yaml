@@ -38,6 +38,7 @@ jobs:
     with:
       service-path: ./src/api
       image-name: house_price_prediction_model
+      version-tag: 1.0.0
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -47,6 +48,7 @@ jobs:
     with:
       service-path: ./streamlit_app
       image-name: house_price_prediction_web_app
+      version-tag: 1.0.0
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
