@@ -8,9 +8,10 @@ WORKDIR /app
 # Install build tools (only in build stage)
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc=4:10.2.1-1 \
-    make=4.3-4.1 \
+    gcc \
+    make \
     && rm -rf /var/lib/apt/lists/*
+
 
 
 COPY requirements.txt .
