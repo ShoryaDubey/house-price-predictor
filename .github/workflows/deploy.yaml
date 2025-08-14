@@ -17,7 +17,7 @@ jobs:
         run: python src/models/train_model.py   --config configs/model_config.yaml   --data data/processed/featured_house_data.csv   --models-dir models
  
   build-vote:
-    uses: ShoryaDubey/.github/workflows/docker-testing.yml@main
+    uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
     with:
       service-path: ./src/api
       image-name: house_price_prediction_model
@@ -26,7 +26,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   build-model:
-    uses: ShoryaDubey/.github/workflows/docker-testing.yml@main
+    uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
     with:
       service-path: ./streamlit_app
       image-name: house_price_prediction_web_app
