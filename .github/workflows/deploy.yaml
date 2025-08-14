@@ -18,7 +18,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Clean and preprocess the raw housing dataset
-        working_directory: ./
         run: |
           python src/data/run_processing.py \
           --input data/raw/house_data.csv \
@@ -38,7 +37,7 @@ jobs:
           --data data/processed/featured_house_data.csv \
           --models-dir models
 
-          
+
   build-vote:
     needs: Build_Model
     uses: ShoryaDubey/vote/.github/workflows/docker-testing.yml@main
