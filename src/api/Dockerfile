@@ -5,7 +5,8 @@ WORKDIR /build
 
 # Install build dependencies (only for compiling Python packages if needed)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
+    gcc=4:10.2.1-1 \
+    make=4.3-4.1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .

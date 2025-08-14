@@ -7,8 +7,10 @@ WORKDIR /app
 
 # Install build tools (only in build stage)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential gcc \
+    gcc=4:10.2.1-1 \
+    make=4.3-4.1 \
     && rm -rf /var/lib/apt/lists/*
+
 
 COPY requirements.txt .
 
